@@ -20,8 +20,8 @@ jobs:
           name: Authenticate and push image to ecr
           command: |
               $(aws ecr get-login --region eu-west-1 --no-include-email)
-              if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                 docker tag $IMAGE_CONTAINER:latest ${ECR_REPOSITORY}/${ECR_REPO_NAME}:circleci-online-dev
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                 docker tag $IMAGE_CONTAINER:latest ${ECR_REPOSITORY}/${ECR_REPO_NAME}:cica-dev-test
                  docker push ${ECR_REPOSITORY}/${ECR_REPO_NAME}:circleci-online-dev
               fi
 
@@ -53,7 +53,7 @@ workflows:
              - build
           filters:
             branches:
-              only: develop
+              only: master
 
 
 
