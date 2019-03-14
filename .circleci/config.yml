@@ -22,7 +22,7 @@ jobs:
               $(aws ecr get-login --region eu-west-1 --no-include-email)
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                  docker tag $IMAGE_CONTAINER:latest ${ECR_REPOSITORY}/${ECR_REPO_NAME}:cica-dev-test
-                 docker push ${ECR_REPOSITORY}/${ECR_REPO_NAME}:circleci-online-dev
+                 docker push ${ECR_REPOSITORY}/${ECR_REPO_NAME}:cica-dev-test
               fi
 
   deploy_to_dev:
